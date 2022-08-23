@@ -20,9 +20,9 @@ CustomError _$CustomErrorFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CustomError {
-  String get code => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
-  String get plugin => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  String? get plugin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $CustomErrorCopyWith<$Res> {
   factory $CustomErrorCopyWith(
           CustomError value, $Res Function(CustomError) then) =
       _$CustomErrorCopyWithImpl<$Res>;
-  $Res call({String code, String message, String plugin});
+  $Res call({String? code, String? message, String? plugin});
 }
 
 /// @nodoc
@@ -56,15 +56,15 @@ class _$CustomErrorCopyWithImpl<$Res> implements $CustomErrorCopyWith<$Res> {
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plugin: plugin == freezed
           ? _value.plugin
           : plugin // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -76,7 +76,7 @@ abstract class _$$_CustomErrorCopyWith<$Res>
           _$_CustomError value, $Res Function(_$_CustomError) then) =
       __$$_CustomErrorCopyWithImpl<$Res>;
   @override
-  $Res call({String code, String message, String plugin});
+  $Res call({String? code, String? message, String? plugin});
 }
 
 /// @nodoc
@@ -99,15 +99,15 @@ class __$$_CustomErrorCopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       plugin: plugin == freezed
           ? _value.plugin
           : plugin // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -115,18 +115,17 @@ class __$$_CustomErrorCopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CustomError implements _CustomError {
-  _$_CustomError(
-      {required this.code, required this.message, required this.plugin});
+  _$_CustomError({this.code, this.message, this.plugin});
 
   factory _$_CustomError.fromJson(Map<String, dynamic> json) =>
       _$$_CustomErrorFromJson(json);
 
   @override
-  final String code;
+  final String? code;
   @override
-  final String message;
+  final String? message;
   @override
-  final String plugin;
+  final String? plugin;
 
   @override
   String toString() {
@@ -166,19 +165,19 @@ class _$_CustomError implements _CustomError {
 
 abstract class _CustomError implements CustomError {
   factory _CustomError(
-      {required final String code,
-      required final String message,
-      required final String plugin}) = _$_CustomError;
+      {final String? code,
+      final String? message,
+      final String? plugin}) = _$_CustomError;
 
   factory _CustomError.fromJson(Map<String, dynamic> json) =
       _$_CustomError.fromJson;
 
   @override
-  String get code;
+  String? get code;
   @override
-  String get message;
+  String? get message;
   @override
-  String get plugin;
+  String? get plugin;
   @override
   @JsonKey(ignore: true)
   _$$_CustomErrorCopyWith<_$_CustomError> get copyWith =>

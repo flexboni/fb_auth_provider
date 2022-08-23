@@ -8,9 +8,9 @@ part of 'custom_error.dart';
 
 _$_CustomError _$$_CustomErrorFromJson(Map<String, dynamic> json) =>
     _$_CustomError(
-      code: json['code'] as String,
-      message: json['message'] as String,
-      plugin: json['plugin'] as String,
+      code: json['code'] as String?,
+      message: json['message'] as String?,
+      plugin: json['plugin'] as String?,
     );
 
 Map<String, dynamic> _$$_CustomErrorToJson(_$_CustomError instance) =>
