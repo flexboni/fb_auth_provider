@@ -115,16 +115,19 @@ class __$$_CustomErrorCopyWithImpl<$Res> extends _$CustomErrorCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CustomError implements _CustomError {
-  _$_CustomError({this.code, this.message, this.plugin});
+  _$_CustomError({this.code = '', this.message = '', this.plugin = ''});
 
   factory _$_CustomError.fromJson(Map<String, dynamic> json) =>
       _$$_CustomErrorFromJson(json);
 
   @override
+  @JsonKey()
   final String? code;
   @override
+  @JsonKey()
   final String? message;
   @override
+  @JsonKey()
   final String? plugin;
 
   @override

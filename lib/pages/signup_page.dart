@@ -1,6 +1,6 @@
 import 'package:fb_auth_provider/models/custom_error.dart';
-import 'package:fb_auth_provider/providers/signin/signin_state.dart';
 import 'package:fb_auth_provider/providers/signin/signup_provider.dart';
+import 'package:fb_auth_provider/providers/signin/signup_state.dart';
 import 'package:fb_auth_provider/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -152,11 +152,11 @@ class _SignupPageState extends State<SignupPage> {
                   const SizedBox(height: 20.0),
                   ElevatedButton(
                     onPressed:
-                        signupState.signupStatus == SigninStatus.submitting
+                        signupState.signupStatus == SignupStatus.submitting
                             ? null
                             : _submit,
                     child: Text(
-                      signupState.signupStatus == SigninStatus.submitting
+                      signupState.signupStatus == SignupStatus.submitting
                           ? 'Loading...'
                           : 'Sign Up',
                     ),
@@ -171,7 +171,7 @@ class _SignupPageState extends State<SignupPage> {
                   const SizedBox(height: 10.0),
                   TextButton(
                     onPressed:
-                        signupState.signupStatus == SigninStatus.submitting
+                        signupState.signupStatus == SignupStatus.submitting
                             ? null
                             : () => Navigator.pop(context),
                     child: Text('Already a member? Sign in!'),
