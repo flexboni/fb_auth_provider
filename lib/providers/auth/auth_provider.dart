@@ -14,7 +14,7 @@ class AuthProvider with ChangeNotifier {
     required this.authRepository,
   });
 
-  void update({fbAuth.User? user}) {
+  void update(fbAuth.User? user) {
     if (user != null) {
       _state = _state.copyWith(
         user: user,
