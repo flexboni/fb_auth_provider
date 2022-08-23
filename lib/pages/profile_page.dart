@@ -1,5 +1,5 @@
-import 'package:fb_auth_provider/providers/profile_provider.dart';
-import 'package:fb_auth_provider/providers/profile_state.dart';
+import 'package:fb_auth_provider/providers/profile/profile_provider.dart';
+import 'package:fb_auth_provider/providers/profile/profile_state.dart';
 import 'package:fb_auth_provider/utils/error_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart' as fbAuth;
 import 'package:flutter/material.dart';
@@ -16,37 +16,41 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   late final ProfileProvider profileProvider;
+  late final void Function() _removeListener;
 
   @override
   void initState() {
     super.initState();
     profileProvider = context.read<ProfileProvider>();
-    profileProvider.addListener(errorDialogListener);
+    _removeListener = profileProvider.addListener(
+      errorDialogListener,
+      fireImmediately: false,
+    );
 
     _getProfile();
   }
 
-  void errorDialogListener() {
-    if (profileProvider.state.profileStatus == ProfileStatus.error) {
-      errorDialog(context, profileProvider.state.error);
+  void errorDialogListener(ProfileState profileState) {
+    if (profileState.profileStatus == ProfileStatus.error) {
+      errorDialog(context, profileState.error);
     }
+  }
+
+  @override
+  void dispose() {
+    _removeListener();
+    super.dispose();
   }
 
   void _getProfile() {
     final String uid = context.read<fbAuth.User>().uid;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<ProfileProvider>().getProfile(uid: 'uid');
+      context.read<ProfileProvider>().getProfile(uid: uid);
     });
   }
 
-  @override
-  void dispose() {
-    profileProvider.removeListener(errorDialogListener);
-    super.dispose();
-  }
-
   Widget _buildProfile() {
-    final profileState = context.watch<ProfileProvider>().state;
+    final profileState = context.watch<ProfileState>();
     if (profileState.profileStatus == ProfileStatus.initial) {
       return Container();
     } else if (profileState.profileStatus == ProfileStatus.loading) {

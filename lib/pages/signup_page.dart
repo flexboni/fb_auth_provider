@@ -1,6 +1,5 @@
 import 'package:fb_auth_provider/models/custom_error.dart';
-import 'package:fb_auth_provider/providers/signin/signup_provider.dart';
-import 'package:fb_auth_provider/providers/signin/signup_state.dart';
+import 'package:fb_auth_provider/providers/providers.dart';
 import 'package:fb_auth_provider/utils/error_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -44,7 +43,7 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    final signupState = context.watch<SignupProvider>().state;
+    final signupState = context.watch<SignupState>();
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
